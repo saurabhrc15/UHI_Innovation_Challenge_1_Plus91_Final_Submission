@@ -1,0 +1,38 @@
+{
+  "name": "eua-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "eua-server.js",
+  "scripts": {
+    "start": "nodemon eua-server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod": " pm2 start eua-server.js --log --time -o ./logs/socket.log -e ./logs/error.log"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.1",
+    "electron-log": "^4.4.8",
+    "express": "^4.18.1",
+    "express-myconnection": "^1.0.4",
+    "fastest-levenshtein": "^1.0.12",
+    "fuzzy": "^0.1.3",
+    "helmet": "^5.1.0",
+    "is-online": "^10.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "lowdb": "^3.0.0",
+    "mysql": "^2.18.1",
+    "node-cron": "^3.0.1",
+    "node-mailjet": "^5.0.1",
+    "node-nlp": "^4.24.0",
+    "pos": "^0.4.2",
+    "request": "^2.88.2",
+    "socket.io-client": "^4.5.1",
+    "string-similarity": "^4.0.4",
+    "util": "^0.12.4",
+    "uuid": "^8.3.2"
+  }
+}

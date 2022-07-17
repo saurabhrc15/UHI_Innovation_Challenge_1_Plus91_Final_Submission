@@ -1,0 +1,10 @@
+[
+    {"entity":"phrase","phrase":"I have %symptom% and %symptom%","search_entity":"symptom"},
+    {"entity":"phrase","phrase":"I have %symptom%","search_entity":"symptom"},
+    {"entity":"phrase","phrase":"I facing %symptom%","search_entity":"symptom"},
+    {"entity":"phrase","phrase":"Looking for %service%","search_entity":"service"},
+    {"entity":"phrase","phrase":"Looking for %speciality%","search_entity":"speciality"},
+    {"entity":"phrase","phrase":"%speciality% near me","search_entity":"speciality"},
+    {"entity":"phrase","phrase":"%location%","search_entity":"location"},
+    {"entity":"phrase","phrase":"speaks %language%","search_entity":"language"}
+]
