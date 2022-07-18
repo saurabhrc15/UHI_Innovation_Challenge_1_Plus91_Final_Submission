@@ -8,41 +8,38 @@ var socket = io.connect(process.env.SOCKET_URL);
 const { NlpManager } = require('node-nlp');
 var fs=require('fs');
 
-// var tt;
+var tt;
 
-// async function nlp(str,data, res)
-// {
-//     try{
-//         const manager = new NlpManager({ languages: ['en'] });
-//         var categoriesFilePath = "dataset/search_categories.json";
-//         if (fs.existsSync(categoriesFilePath)) {
-//             var symptomData = JSON.parse(fs.readFileSync(categoriesFilePath,'utf8'))
-//             for(let i in symptomData)
-//             {
-//                 manager.addNamedEntityText(symptomData[i]["entity"], symptomData[i]["name"], ['en'], symptomData[i]["similar_names"] );
-//             }   
-//         }
-//         phrasesFilePath = "dataset/search_phrases.json";
-//         if (fs.existsSync(phrasesFilePath)) {
-//             var phrasesData = JSON.parse(fs.readFileSync(phrasesFilePath,'utf8'))
-//             for(let i in phrasesData)
-//             {
-//                 manager.addDocument('en', phrasesData[i]["phrase"], phrasesData[i]["search_entity"]);
-//             }   
-//         }
-//         await manager.train();
-//         manager
-//         .process(str)
-//         .then(result => {
-//             showData(result,data);
-//             return 0;
-//         });
-//     } catch (err) {
-//         log.info(err);
-//         console.log(err);
-//         console.error(err);
-//     }
-// }
+async function nlp(str,data)
+{
+    try{
+        const manager = new NlpManager({ languages: ['en'] });
+        var categoriesFilePath = "dataset/search_categories.json";
+        if (fs.existsSync(categoriesFilePath)) {
+            var symptomData = JSON.parse(fs.readFileSync(categoriesFilePath,'utf8'))
+            for(let i in symptomData)
+            {
+                manager.addNamedEntityText(symptomData[i]["entity"], symptomData[i]["name"], ['en'], symptomData[i]["similar_names"] );
+            }   
+        }
+        phrasesFilePath = "dataset/search_phrases.json";
+        if (fs.existsSync(phrasesFilePath)) {
+            var phrasesData = JSON.parse(fs.readFileSync(phrasesFilePath,'utf8'))
+            for(let i in phrasesData)
+            {
+                manager.addDocument('en', phrasesData[i]["phrase"], phrasesData[i]["search_entity"]);
+            }   
+        }
+        await manager.train();
+        manager
+        .process(str)
+        .then(result => {
+            showData(result,data);
+        });
+    } catch (err) {
+        console.error(err);
+    }
+}
 
 // exports.nlp = async function (req, res) {
 //     // global tt : any;
@@ -91,7 +88,7 @@ var fs=require('fs');
 //     });
 //     res.status(200).json({"HI":"HI"});
 // }
-
+/*
 function showData(result,data, transactionId,messageId,request_datetime)
 {
     var speciality = "";
@@ -238,7 +235,7 @@ function showData(result,data, transactionId,messageId,request_datetime)
             body
         };
     });
-}
+}*/
 
 exports.search = async function (req, res) {
     let params = {}
@@ -270,7 +267,7 @@ exports.search = async function (req, res) {
         .process(data.searchvalue)
         .then(result => {
             // showData(result,data,transactionId,messageId,request_datetime);
-            // console.log("responseData",responseData);
+            console.log("Data Found",);
             
             var speciality = "";
             var symptom = "";
@@ -389,9 +386,6 @@ exports.search = async function (req, res) {
                 };
             });
         });
-        
-        // return;
-        
         
         /*var intentData = {};
         

@@ -18,11 +18,11 @@ exports.addLogs = function (data) {
         pool.query(query, myObj, function (error, res) {
             if(error)
             {
-                // console.log("Log Error : ",error);
+                console.log("Log Error : ",error);
             }
             else
             {
-                // console.log("Log Added : ",res)
+                console.log("Log Added : ",res)
             }
         });
     } catch (err) {

@@ -2,28 +2,26 @@ const mysql = require('mysql');
 const util = require('util');
 
 // UAT
+// const pool = mysql.createPool({
+//     connectionLimit : 500,
+//     host: "localhost",
+//     user: "root",
+//     password: "plus91",
+//     database: "uhi_hackathon",
+//     port: 3306
+// })
+
+Live
 const pool = mysql.createPool({
     connectionLimit : 500,
-    host: "localhost",
-    user: "root",
-    password: "plus91",
-    database: "uhi_hackathon",
+    host: "54.245.221.211",
+    user: "angpro91",
+    password: "Hs&056ZA",
+    database: "uhi_eua_hackathon",
     port: 3306,
     dateStrings: true,
     timezone: '+05:30'
 })
-
-// Live
-// const pool = mysql.createPool({
-//     connectionLimit : 500,
-//     host: "54.245.221.211",
-//     user: "angpro91",
-//     password: "Hs&056ZA",
-//     database: "uhi_eua_hackathon",
-//     port: 3306,
-//     dateStrings: true,
-//     timezone: '+05:30'
-// })
 
 pool.getConnection((err, connection) => {
     if (err) {
